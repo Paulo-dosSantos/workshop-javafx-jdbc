@@ -31,6 +31,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Seller;
+import model.services.DepartmentService;
 import model.services.SellerService;
 
 public class SellerListController implements Initializable, DataChangeListener{
@@ -125,7 +126,8 @@ public class SellerListController implements Initializable, DataChangeListener{
 			
 			controller.subscribeDataChangeListener(this);
 			controller.updateFormData();
-			controller.setSellerService(service);
+			controller.setServices(new SellerService(), new DepartmentService());
+			controller.loadAssociatedObjects();
 			Stage dialogStage= new Stage();
 			dialogStage.setTitle("Entre com os dados do departamento: ");
 			dialogStage.setScene(new Scene(pane));
@@ -134,8 +136,11 @@ public class SellerListController implements Initializable, DataChangeListener{
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.showAndWait();
 			
+			
+			
 		}
 		catch(IOException e) {
+			e.printStackTrace();
 			Alerts.showAlert("IO Exception", "erro ao carregar página", e.getMessage(), AlertType.ERROR);
 			
 		}
