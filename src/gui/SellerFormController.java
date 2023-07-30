@@ -1,9 +1,11 @@
 package gui;
 
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -183,12 +185,34 @@ public class SellerFormController implements Initializable {
 		if (txtName.getText() == null || txtName.getText().trim().equals("")) {
 			error.addErrors("name", "O campo não pode ser vazio");
 		}
+		
+		
+		
+		
+		
+		
+		if (txtEmail.getText() == null || txtEmail.getText().trim().equals("")) {
+			error.addErrors("email", "O campo não pode ser vazio");}
+		
+		
 		if (error.getErrors().size() > 0) {
 			throw error;
 		}
-
+		if (txtBaseSalary.getText() == null || txtBaseSalary.getText().trim().equals("")) {
+			error.addErrors("baseSalary", "O campo não pode ser vazio");
+		}
+		
+		if(dpBirthDate.getValue()==null) {
+			error.addErrors("birthDate", "O campo não pode ser vazio");
+			
+		}
+		obj.setBaseSalary(Utils.tryParseToDouble(txtBaseSalary.getText()));
 		obj.setName(txtName.getText());
-
+		obj.setEmail(txtEmail.getText());
+		obj.setDepartment(comboBoxDepartment.getValue());
+		
+		Instant instant= Instant.from(dpBirthDate.getValue().atStartOfDay(ZoneId.systemDefault()));
+		obj.setBirthDate(Date.from(instant));
 		return obj;
 	}
 
@@ -204,9 +228,27 @@ public class SellerFormController implements Initializable {
 
 	private void setErrorsMessages(Map<String, String> errors) {
 		Set<String> fields = errors.keySet();
+		
+		labelErrorName.setText(fields.contains("name")? errors.get("name"):"");
+		labelErrorEmail.setText(fields.contains("email")? errors.get("email"):"");
+		labelErrorBirthDate.setText(fields.contains("birthDate")? errors.get("birthDate"):"");
+		labelErrorBaseSalary.setText(fields.contains("baseSalary")? errors.get("baseSalary"):"");
 
 		if (fields.contains("name")) {
 			labelErrorName.setText(errors.get("name"));
+		}
+		else {
+			labelErrorName.setText("");
+		}
+		labelErrorName.setText(fields.contains("name")? errors.get("name"):"");
+		if (fields.contains("email")) {
+			labelErrorEmail.setText(errors.get("email"));
+		}
+		if (fields.contains("baseSalary")) {
+			labelErrorBaseSalary.setText(errors.get("baseSalary"));
+		}
+		if(fields.contains("birthDate")) {
+			labelErrorBirthDate.setText(errors.get("birthDate"));
 		}
 	}
 

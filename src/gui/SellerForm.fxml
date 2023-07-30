@@ -31,20 +31,20 @@
          <children>
             <Label text="Id" />
             <Label text="Nome" GridPane.rowIndex="1" />
-            <TextField fx:id="txtId" editable="false" GridPane.columnIndex="1" />
-            <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="labelErrorName" textFill="#d12e2e" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label text="E-mail" GridPane.rowIndex="2" />
             <Label text="Aniversário" GridPane.rowIndex="3" />
             <Label text="Salário Base" GridPane.rowIndex="4" />
             <Label text="Departamento" GridPane.rowIndex="5" />
+            <TextField fx:id="txtId" editable="false" GridPane.columnIndex="1" />
+            <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="labelErrorName" textFill="#d12e2e" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <TextField fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txtBaseSalary" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="dpBirthDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="comboBoxDepartment" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="txtBaseSalary" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="labelErrorEmail" textFill="#c42222" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label fx:id="labelErrorBirthDate" prefHeight="18.0" prefWidth="30.0" textFill="#a91818" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label fx:id="labelErrorBaseSalary" textFill="#ea1e1e" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <ComboBox fx:id="comboBoxDepartment" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox layoutX="86.0" layoutY="214.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
